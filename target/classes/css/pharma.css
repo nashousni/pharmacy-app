@@ -1,0 +1,8 @@
+.root {
+     /*-fx-background-image: url("../images/logo.bmp");*/
+     -fx-background-repeat: stretch ;
+     -fx-background-position: center;
+     -fx-background-color: cornflowerblue;
+     -fx-alignment: center;
+	     
+}
