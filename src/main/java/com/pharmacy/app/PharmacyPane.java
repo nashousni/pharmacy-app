@@ -60,9 +60,7 @@ public class PharmacyPane extends BorderPane {
 
 	}
     void addEvents( ) {
-    	connexion.setOnAction(e -> {
-    		new LoginScreen();
-    	});
+    	connexion.setOnAction(e -> new LoginScreen());
     	
     }
 	PharmacyPane() {
