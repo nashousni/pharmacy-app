@@ -18,10 +18,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-/**
- *
- * @web http://zoranpavlovic.blogspot.com/
- */
+
 public class LoginScreen extends BorderPane {
 
 	String user = "JavaFX2";

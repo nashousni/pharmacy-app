@@ -5,7 +5,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 
-public class PharmacyMainPage extends BorderPane {
+public class PharmacyPane extends BorderPane {
 	
 	MenuItem connexion = new MenuItem("Connexion");
 	MenuItem userGuide = new MenuItem("Guide utilisateur");
@@ -61,7 +61,7 @@ public class PharmacyMainPage extends BorderPane {
     	});
     	
     }
-	PharmacyMainPage() {
+	PharmacyPane() {
 		createMenu();
 		addEvents();
 	}
