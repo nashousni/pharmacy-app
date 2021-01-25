@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 
 public class LoginScreen extends BorderPane {
 
-	String user = "JavaFX2";
+	String user = "Pharma";
 	
 	String pw = "password";
 	
