@@ -2,6 +2,7 @@ package com.pharmacy.app;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class PharmacyApp extends Application {
@@ -11,7 +12,8 @@ public class PharmacyApp extends Application {
         Scene scene = new Scene(new Login(), 700, 570);
         scene.getStylesheets().add(getClass().getResource("/css/login.css").toExternalForm());
         stage.setScene(scene);
-        stage.setTitle("Pharma management");
+        stage.setTitle("Pharma Management");
+        stage.getIcons().add(new Image("/images/pharma-logo.png"));
         stage.setResizable(false);
         stage.show();
     }
