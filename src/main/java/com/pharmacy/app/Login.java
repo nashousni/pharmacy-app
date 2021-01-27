@@ -1,8 +1,10 @@
 package com.pharmacy.app;
 
+import com.pharmacy.security.Authenticator;
+import com.pharmacy.utils.PharmacyConstants;
 import javafx.event.ActionEvent;
-import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -11,14 +13,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
-import org.checkerframework.checker.units.qual.A;
-
-import java.net.URL;
-import java.util.ResourceBundle;
+import javafx.stage.Stage;
 
 public class Login extends AnchorPane {
+
+    private Stage loginStage;
 
 
     private final Label userNameLabel;
@@ -27,13 +27,13 @@ public class Login extends AnchorPane {
     private final Label passWordLabel;
     private final PasswordField passwordField;
 
-    private final Button login;
+    private final Button loginButton;
 
     private final Label errorMessage;
 
-    private Main application;
+    public Login(Stage stage) {
+        loginStage = stage;
 
-    public Login() {
         userNameLabel = new Label("Username");
         userNameLabel.setLayoutX(14.0);
         userNameLabel.setLayoutY(67.0);
@@ -52,13 +52,16 @@ public class Login extends AnchorPane {
         passwordField.setLayoutY(157.0);
         passwordField.setPrefWidth(415.0);
 
-        login = new Button("Login");
-        login.setPrefHeight(70.0);
-        login.setPrefWidth(400.0);
-        login.setDefaultButton(true);
-        login.setOnAction(this::processLogin);
+        loginButton = new Button("Login");
+        loginButton.setPrefHeight(70.0);
+        loginButton.setPrefWidth(400.0);
+        loginButton.setDefaultButton(true);
+        loginButton.setOnAction(this::processLogin);
+        loginButton.disableProperty().bind(userId.textProperty().isEmpty().or(passwordField.textProperty().isEmpty()));
+
 
         errorMessage = new Label("");
+        //errorMessage.setTextFill(Color.RED);
 
         AnchorPane anchorPane2 = new AnchorPane();
         anchorPane2.setPrefHeight(300.0);
@@ -95,22 +98,22 @@ public class Login extends AnchorPane {
         AnchorPane.setBottomAnchor(anchorPane2, 200.0);
         AnchorPane.setLeftAnchor(anchorPane2, 0.0);
         AnchorPane.setRightAnchor(anchorPane2, 0.0);
-        AnchorPane.setTopAnchor(anchorPane2,0.0);
+        AnchorPane.setTopAnchor(anchorPane2, 0.0);
 
         AnchorPane.setBottomAnchor(vBox, 0.0);
         AnchorPane.setLeftAnchor(vBox, 29.0);
         AnchorPane.setRightAnchor(vBox, 40.0);
-        AnchorPane.setTopAnchor(vBox,0.0);
+        AnchorPane.setTopAnchor(vBox, 0.0);
 
-        AnchorPane.setLeftAnchor(userId,10.0);
+        AnchorPane.setLeftAnchor(userId, 10.0);
         AnchorPane.setRightAnchor(userId, 0.0);
 
-        AnchorPane.setLeftAnchor(passwordField,10.0);
+        AnchorPane.setLeftAnchor(passwordField, 10.0);
         AnchorPane.setRightAnchor(passwordField, 0.0);
 
-        AnchorPane.setBottomAnchor(login, 66.0);
-        AnchorPane.setLeftAnchor(login, 40.0);
-        AnchorPane.setRightAnchor(login, 40.0);
+        AnchorPane.setBottomAnchor(loginButton, 66.0);
+        AnchorPane.setLeftAnchor(loginButton, 40.0);
+        AnchorPane.setRightAnchor(loginButton, 40.0);
 
         AnchorPane.setBottomAnchor(hBox, 156.0);
         AnchorPane.setLeftAnchor(hBox, 41.0);
@@ -126,12 +129,25 @@ public class Login extends AnchorPane {
         setPrefHeight(500);
         setPrefWidth(500);
         getChildren().add(anchorPane2);
-        getChildren().add(login);
+        getChildren().add(loginButton);
         getChildren().add(hBox);
         getStyleClass().add("background");
     }
 
     private void processLogin(ActionEvent event) {
+        final String userName = userId.getText();
+        final String passW = passwordField.getText();
+
+        if (Authenticator.validate(userName, passW)) {
+            Stage stage = new Stage();
+            Scene scene = new Scene(new PharmacyPane(), 900, 770);
+            stage.setScene(scene);
+            stage.setTitle(PharmacyConstants.TITLE);
+            stage.show();
+            loginStage.hide();
+        } else {
+            errorMessage.setText("Incorrect user or password");
+        }
     }
 
 }
