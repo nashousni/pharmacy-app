@@ -5,17 +5,21 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.BorderPane;
 
+import java.util.ResourceBundle;
+
 public class PharmacyPane extends BorderPane {
+
+	private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle("lang.PharmacyPane");
 	
 	MenuItem connexion = new MenuItem("Connexion");
-	MenuItem userGuide = new MenuItem("Guide utilisateur");
+	MenuItem userGuide = new MenuItem(RESOURCE_BUNDLE.getString("UserGuide"));
 
 	private void createMenu() {
 		MenuBar menuBar = new MenuBar();
 
-		Menu file = new Menu("Fichier");
+		Menu file = new Menu(RESOURCE_BUNDLE.getString("File"));
 		Menu suppliers = new Menu("Fournisseurs");
-		Menu products = new Menu("Produits");
+		Menu products = new Menu(RESOURCE_BUNDLE.getString("Products"));
 		Menu vente = new Menu("Vente");
 		Menu personnel = new Menu("Personnel");
 		Menu comptabilite = new Menu("Comptabilité");
@@ -56,9 +60,7 @@ public class PharmacyPane extends BorderPane {
 
 	}
     void addEvents( ) {
-    	connexion.setOnAction(e -> {
-    		new LoginScreen();
-    	});
+    	connexion.setOnAction(e -> new LoginScreen());
     	
     }
 	PharmacyPane() {

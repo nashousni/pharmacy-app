@@ -23,19 +23,21 @@ public class LoginScreen extends BorderPane {
 
 	String user = "Pharma";
 	
-	String pw = "password";
-	
-	String checkUser, checkPw;
-	
+	String pwd = "password";
+
+	private String checkUser;
+
+	private String checkPw;
+
     private final Button btnLogin = new Button("Login");
     
 	Label labelUserName = new Label("Username");
 	
 	private final TextField txtUserName = new TextField();
 	
-	final Label labelPassword = new Label("Password");
+	private final Label labelPassword = new Label("Password");
 	
-	private PasswordField pwdf = new PasswordField();
+	private final PasswordField pwdf = new PasswordField();
 		
 	private final Label labelMessage = new Label();    
     
@@ -43,9 +45,9 @@ public class LoginScreen extends BorderPane {
 	
 	void addEvents() {
 		btnLogin.setOnAction(e -> {
-			checkUser = txtUserName.getText().toString();
-			checkPw = pwdf.getText().toString();
-			if (checkUser.equals(user) && checkPw.equals(pw)) {
+			checkUser = txtUserName.getText();
+			checkPw = pwdf.getText();
+			if (user.equals(checkUser) && pwd.equals(checkPw)) {
 				labelMessage.setText("Congratulations!");
 				labelMessage.setTextFill(Color.GREEN);
 			} else {
@@ -54,14 +56,10 @@ public class LoginScreen extends BorderPane {
 			}
 			txtUserName.setText("");
 			pwdf.setText("");
-			
-			System.out.println("kallo Mohamed");
-
 		});
 	}
 
 	public LoginScreen() {
-		System.out.println("kallo Mohamed");
 
 		setPadding(new Insets(10, 50, 50, 50));
 
