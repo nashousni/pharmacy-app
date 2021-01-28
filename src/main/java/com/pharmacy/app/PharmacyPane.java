@@ -1,21 +1,28 @@
 package com.pharmacy.app;
 
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
+import com.pharmacy.utils.Glyph;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 
+import java.util.ResourceBundle;
+
 public class PharmacyPane extends BorderPane {
+
+	private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle("lang.PharmacyPane");
 	
 	MenuItem connexion = new MenuItem("Connexion");
-	MenuItem userGuide = new MenuItem("Guide utilisateur");
+	Menu newMenuItem = new Menu("New");
+	MenuItem userGuide = new MenuItem(RESOURCE_BUNDLE.getString("UserGuide"));
+	SeparatorMenuItem separatorMenuItem = new SeparatorMenuItem();
+	MenuItem exitMenuItem = new MenuItem("Exit");
+
 
 	private void createMenu() {
 		MenuBar menuBar = new MenuBar();
 
-		Menu file = new Menu("Fichier");
+		Menu file = new Menu(RESOURCE_BUNDLE.getString("File"));
 		Menu suppliers = new Menu("Fournisseurs");
-		Menu products = new Menu("Produits");
+		Menu products = new Menu(RESOURCE_BUNDLE.getString("Products"));
 		Menu vente = new Menu("Vente");
 		Menu personnel = new Menu("Personnel");
 		Menu comptabilite = new Menu("Comptabilité");
@@ -35,7 +42,15 @@ public class PharmacyPane extends BorderPane {
 		// Vente items
 		
 		// Ajout des items aux menus
-		file.getItems().addAll(connexion, userGuide);
+		//Creating menu items for the sub item edit
+		MenuItem userItem = new MenuItem("User", Glyph.createAwesomeFont('\uf120').size("1.2em"));
+		MenuItem supplierItem = new MenuItem("supplier");
+		MenuItem productItem = new MenuItem("product");
+
+		//Adding toggle group to the view menu item
+		newMenuItem.getItems().addAll(userItem, supplierItem, productItem);
+
+		file.getItems().addAll(newMenuItem, userGuide, separatorMenuItem, exitMenuItem);
 		vente.getItems().addAll(ajoutClient, operaVente, fichePrix, produitsVendus, sav);
 		/*
 		 * suppliers.getItems().addAll(ajoutClient, operaVente, fichePrix,
@@ -56,9 +71,8 @@ public class PharmacyPane extends BorderPane {
 
 	}
     void addEvents( ) {
-    	connexion.setOnAction(e -> {
-    		new LoginScreen();
-    	});
+		exitMenuItem.setOnAction(event -> System.exit(0));
+    	connexion.setOnAction(e -> new LoginScreen());
     	
     }
 	PharmacyPane() {
