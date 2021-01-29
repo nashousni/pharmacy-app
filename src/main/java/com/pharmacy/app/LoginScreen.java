@@ -70,8 +70,8 @@ public class LoginScreen extends BorderPane {
 		// Adding GridPane
 		GridPane gridPane = new GridPane();
 		gridPane.setPadding(new Insets(20, 20, 20, 20));
-		gridPane.setHgap(5);
-		gridPane.setVgap(5);
+		gridPane.setHgap(6);
+		gridPane.setVgap(6);
 
 		/*// Implementing Nodes for GridPane
 		Label labelUserName = new Label("Username");
