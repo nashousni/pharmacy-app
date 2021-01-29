@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 
 public class Login extends AnchorPane {
 
-    private Stage loginStage;
+    private final Stage loginStage;
 
 
     private final Label userNameLabel;
