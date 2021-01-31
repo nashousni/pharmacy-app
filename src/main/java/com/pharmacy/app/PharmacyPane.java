@@ -31,7 +31,12 @@ public class PharmacyPane extends BorderPane {
         Menu personnel = new Menu("Personnel");
         Menu comptabilite = new Menu("Comptabilité");
         Menu admin = new Menu("Administration");
-        Menu help = new Menu("Help?");
+        Menu help = new Menu("Help");
+
+        //help items
+        MenuItem aboutMenuItem = new MenuItem("About");
+
+
 
         // add MenuItem
 
@@ -56,6 +61,7 @@ public class PharmacyPane extends BorderPane {
 
         file.getItems().addAll(newMenuItem, userGuide, separatorMenuItem, exitMenuItem);
         vente.getItems().addAll(ajoutClient, operaVente, fichePrix, produitsVendus, sav);
+        help.getItems().addAll(aboutMenuItem);
         /*,
          * suppliers.getItems().addAll(ajoutClient, operaVente, fichePrix,
          * produitsVendus, sav); help.getItems().addAll(ajoutClient, operaVente,

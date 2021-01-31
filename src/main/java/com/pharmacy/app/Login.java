@@ -95,7 +95,7 @@ public class Login extends AnchorPane {
         anchorPane.getChildren().add(passwordField);
         anchorPane.getChildren().add(imageView);
 
-        AnchorPane.setBottomAnchor(anchorPane2, 200.0);
+        AnchorPane.setBottomAnchor(anchorPane2, 160.0);
         AnchorPane.setLeftAnchor(anchorPane2, 0.0);
         AnchorPane.setRightAnchor(anchorPane2, 0.0);
         AnchorPane.setTopAnchor(anchorPane2, 0.0);
@@ -111,11 +111,11 @@ public class Login extends AnchorPane {
         AnchorPane.setLeftAnchor(passwordField, 10.0);
         AnchorPane.setRightAnchor(passwordField, 0.0);
 
-        AnchorPane.setBottomAnchor(loginButton, 66.0);
+        AnchorPane.setBottomAnchor(loginButton, 46.0);
         AnchorPane.setLeftAnchor(loginButton, 40.0);
         AnchorPane.setRightAnchor(loginButton, 40.0);
 
-        AnchorPane.setBottomAnchor(hBox, 156.0);
+        AnchorPane.setBottomAnchor(hBox, 126.0);
         AnchorPane.setLeftAnchor(hBox, 41.0);
         AnchorPane.setRightAnchor(hBox, 41.0);
 
